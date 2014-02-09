@@ -1,0 +1,17 @@
+<?php
+
+//Bootstraping, setting up and loading loading the core
+
+//Autoload classdeclarations
+
+function autoload($aClassName) {
+  $classFile = "/src/{$aClassName}/{$aClassName}.php";
+   $file1 = RAND_SITE_PATH . $classFile;
+   $file2 = RAND_INSTALL_PATH . $classFile;
+   if(is_file($file1)) {
+      require_once($file1);
+   } elseif(is_file($file2)) {
+      require_once($file2);
+   }
+}
+spl_autoload_register('autoload');
